@@ -1,6 +1,8 @@
 <h1>Reactive Form Example</h1>
-<p>First Name: <input type="text"></p>
-<p>Last Name: <input type="text"></p>
-<button>Set First Name Programatically</button>
-<button>Clear First Name Programatically</button>
+<form [formGroup]="reactiveForm">
+    <p>First Name: <input type="text" formControlName="firstName"></p>
+    <p>Last Name: <input type="text" formControlName="lastName"></p>
+    <button type="button" (click)="setFirstNameReactive()">Set First Name Programatically</button>
+    <button type="button" (click)="clearFirstNameReactive()">Clear First Name Programatically</button>
+</form>
 <p><span>{{ outputTemplate }}</span></p>
