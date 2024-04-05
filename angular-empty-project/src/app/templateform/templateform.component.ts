@@ -9,5 +9,14 @@ export class TemplateformComponent {
   firstName: string = '';
   lastName: string = '';
   outputTemplate: string = '';
+  
+  setFirstNameTemplate() {
+    this.outputTemplate = `First Name: ${this.firstName} Last Name: ${this.lastName}`;
+  }
 
+  clearFirstNameTemplate() {
+    this.firstName = '';
+    this.lastName = '';
+    this.outputTemplate = '';
+  }
 }
