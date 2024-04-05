@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./templateform.component.css']
 })
 export class TemplateformComponent {
+  firstName: string = '';
+  lastName: string = '';
+  outputTemplate: string = '';
 
 }
