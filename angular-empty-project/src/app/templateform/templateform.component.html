@@ -1,0 +1,8 @@
+<h1>Template Driven Form Example</h1>
+<form #formTemplate="ngForm">
+    <p>First Name: <input type="text" name="firstName" ngModel></p>
+    <p>Last Name: <input type="text" name="lastName" ngModel></p>
+    <button type="button" (click)="setFirstNameTemplate(formTemplate)">Set First Name Programatically</button>
+    <button type="button" (click)="clearFirstNameTemplate(formTemplate)">Clear First Name Programatically</button>
+</form>
+<p>Output: <span>{{ outputTemplate }}</span></p>
