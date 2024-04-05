@@ -1,8 +1,30 @@
-<h1>Reactive Form Example</h1>
-<form [formGroup]="reactiveForm">
-    <p>First Name: <input type="text" formControlName="firstName"></p>
-    <p>Last Name: <input type="text" formControlName="lastName"></p>
-    <button type="button" (click)="setFirstNameReactive()">Set First Name Programatically</button>
-    <button type="button" (click)="clearFirstNameReactive()">Clear First Name Programatically</button>
+<h1>Template Driven Form Example</h1>
+<form #formTemplate="ngForm">
+  <p>
+    First Name:
+    <input
+      type="text"
+      name="firstName"
+      [(ngModel)]="firstName"
+      (ngModelChange)="modelChangeFn($event)"
+    />
+  </p>
+  <p>
+    Last Name:
+    <input
+      type="text"
+      name="lastName"
+      [(ngModel)]="lastName"
+      (ngModelChange)="modelChangeLn($event)"
+    />
+  </p>
+  <button type="button" (click)="setFirstNameTemplate()">
+    Set First Name Programatically
+  </button>
+  <button type="button" (click)="clearFirstNameTemplate()">
+    Clear First Name Programatically
+  </button>
 </form>
-<p><span>{{ outputTemplate }}</span></p>
+<p>
+  Output: <span>{{ outputTemplate }}</span>
+</p>

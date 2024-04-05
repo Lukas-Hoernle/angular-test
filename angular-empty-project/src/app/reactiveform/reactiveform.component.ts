@@ -1,48 +1,30 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-reactiveform',
-  templateUrl: './reactiveform.component.html',
-  styleUrls: ['./reactiveform.component.css'],
+  selector: 'app-templateform',
+  templateUrl: './templateform.component.html',
+  styleUrls: ['./templateform.component.css'],
 })
-export class ReactiveformComponent {
-  reactiveForm: FormGroup;
-  outputTemplate: string;
+export class TemplateformComponent {
+  firstName: string = '';
+  lastName: string = '';
+  outputTemplate: string = '';
 
-  constructor(private formBuilder: FormBuilder) {
-    this.reactiveForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-    });
-  }
-  ngOnInit() {
-    this.reactiveForm.valueChanges
-      .pipe(
-        map((value) => {
-          var firstName, lastName;
-          return ({ firstName, lastName } = value || {});
-        })
-      )
-      .subscribe(({ firstName, lastName }) => {
-        this.outputTemplate = `First Name: ${firstName} Last Name: ${lastName}`;
-      });
+  modelChangeFn(value) {
+    this.outputTemplate = `First Name: ${value} Last Name: ${this.lastName}`;
   }
 
-  setFirstNameReactive() {
-    var firstName = this.reactiveForm.get('firstName').value;
-    if (firstName == null) {
-      firstName = 'John';
-      this.reactiveForm.controls.firstName.setValue('John');
-    }
-
-    const lastName = this.reactiveForm.get('lastName').value;
-    this.outputTemplate = `First Name: ${firstName} Last Name: ${lastName}`;
+  modelChangeLn(value) {
+    this.outputTemplate = `First Name: ${this.firstName} Last Name: ${value}`;
+  }
+  setFirstNameTemplate() {
+    this.firstName = 'John';
+    this.outputTemplate = `First Name: ${this.firstName} Last Name: ${this.lastName}`;
   }
 
-  clearFirstNameReactive() {
-    this.reactiveForm.reset();
+  clearFirstNameTemplate() {
+    this.firstName = '';
+    this.lastName = '';
     this.outputTemplate = '';
   }
 }
